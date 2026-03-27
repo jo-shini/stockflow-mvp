@@ -25,20 +25,18 @@ export default function ProductForm() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const fetchProduct = async () => {
+            if (id) fetchProduct();
 
-        if (id) fetchProduct();
+            const res = await API.get("/products");
+            const product = res.data.find((p) => p._id === id);
+            if (product) setForm(product);
 
+        };
+        fetchProduct();
     }, [id]);
 
-    const fetchProduct = async () => {
 
-        const res = await API.get("/products");
-
-        const product = res.data.find((p) => p._id === id);
-
-        if (product) setForm(product);
-
-    };
 
     const handleSubmit = async (e) => {
 

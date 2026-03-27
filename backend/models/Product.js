@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema({
 
     lowStockThreshold: { type: Number },
 
-    organizationID: {
+    organizationId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Organozation",
         required: true
